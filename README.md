@@ -1,3 +1,29 @@
+# ⚠️ Security Analysis Report — "Fake Job Demo" Manicro Demo Repository
+
+**This is an active malware. Do not run this code.**
+
+## CRITICAL SECURITY ALERT - EMBEDDED BACKDOOR DETECTED
+
+**Source**: Linkedin job offer
+
+**Sender** https://www.linkedin.com/in/andrii-shan-0335b2368/
+
+**Sender's notion** https://www.notion.so/Manicro-V-Demo-Review-2ee561957fc680798cdaf8479bf3bccb
+
+**Original repository**: https://bitbucket.org/tre555/manicro-demo-version/src/main/
+
+**Analysis Date**: 2026-03-01
+
+**Status**: ⚠️ HIGH-SEVERITY EXPLOIT — Do not run npm install or any project commands
+
+
+
+Hidden at the end of `tailwind.config.js`, pushed roughly 2,000 characters off-screen with whitespace - is a heavily obfuscated, multi-layer JavaScript backdoor. The moment the victim runs `npm start`, the malicious code silently executes inside Node.js: it contacts a hardcoded C2 server to fingerprint the victim's machine (hostname, OS, network info, external IP), then downloads and installs a Stage 2 payload into `~/.vscode/` and executes it with full Node.js privileges, all with zero console output. The implant then calls home every 10 minutes and self-updates, making it persistent and stealthy. Based on known campaigns of this type, the final payload is typically a **remote access trojan (RAT) and credential harvester** targeting browser data, crypto wallets, SSH keys, and developer credentials.
+
+<details>
+<summary>Original description</summary>
+
+
 ![](/public/favicon.ico)
 
 [![Styled With Prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://prettier.io/)
@@ -71,3 +97,5 @@ After setting up and exploring the application:
 This repository forms the base layer of Manicro’s new decentralized ecosystem — merging DeFi trading, staking, and prediction gaming under one unified experience.
 
 Your review, insights, and technical feedback will directly influence the next evolution of the platform — guiding our transition from this foundational build to a robust, scalable, and globally distributed system.
+
+</details>
