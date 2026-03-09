@@ -16,9 +16,9 @@
 
 **Status**: ⚠️ HIGH-SEVERITY EXPLOIT — Do not run npm install or any project commands
 
-
-
 Hidden at the end of `tailwind.config.js`, pushed roughly 2,000 characters off-screen with whitespace - is a heavily obfuscated, multi-layer JavaScript backdoor. The moment the victim runs `npm start`, the malicious code silently executes inside Node.js: it contacts a hardcoded C2 server to fingerprint the victim's machine (hostname, OS, network info, external IP), then downloads and installs a Stage 2 payload into `~/.vscode/` and executes it with full Node.js privileges, all with zero console output. The implant then calls home every 10 minutes and self-updates, making it persistent and stealthy. Based on known campaigns of this type, the final payload is typically a **remote access trojan (RAT) and credential harvester** targeting browser data, crypto wallets, SSH keys, and developer credentials.
+
+All details in [SECURITY_REPORT.md](./SECURITY_REPORT.md).
 
 <details>
 <summary>Original description</summary>
